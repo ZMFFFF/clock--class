@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <script src="js/bigCircle.js"></script>
+    <script src="js/smallCircle.js"></script>
+    <script src="js/box.js"></script>
+    <script src="js/num.js"></script>
+    <script src="js/dot.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/run.js"></script>
+
+    <script>
+        var big = new BigCircle('outer');
+        big.render();
+
+        var small = new SmallCircle('inner');
+        small.render();
+
+        var box = new Box('box');
+        box.render();
+
+        for (let i = 1; i <= 12; i++) {
+            var num = new Num('num', i);
+            num.render();
+        }
+
+        var dot = new Dot('dot');
+        dot.render();
+
+        var second = new Line('second line');
+        second.render();
+
+        var minute = new Line('minute line');
+        minute.render();
+
+        var hour = new Line('hour line');
+        hour.render();
+
+        var s = document.querySelector('.second');
+        var m = document.querySelector('.minute');
+        var h = document.querySelector('.hour');
+        var run = new Run(s, m, h);
+        run.rotate();
+
+        var timer = setInterval("run.rotate()", 1000);
+        window.onunload = function () {
+            clearInterval(timer);
+        }
+
+    </script>
+</body>
+
+</html>
